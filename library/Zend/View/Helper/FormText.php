@@ -65,7 +65,15 @@ class Zend_View_Helper_FormText extends Zend_View_Helper_FormElement
             $disabled = ' disabled="disabled"';
         }
 
-        return '<input type="text"'
+/** 
+	MWD Update To allow html5 specal form elements like email date etc..
+*/
+        $type = 'text' ;
+        if(!empty($attribs['type']))
+        {
+            $type = $attribs['type'];
+        }
+        return '<input type="'. $this->view->escape($type) .'"'
                 . ' name="' . $this->view->escape($name) . '"'
                 . ' id="' . $this->view->escape($id) . '"'
                 . ' value="' . $this->view->escape($value) . '"'
